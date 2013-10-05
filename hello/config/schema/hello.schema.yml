@@ -1,0 +1,12 @@
+# Schema for the configuration files of the Hello World module.
+
+hello.settings:
+  type: mapping
+  label: 'Hello World settings'
+  mapping:
+    case:
+      type: integer
+      label: 'Letter case of your "Hello World!" message'
+    hello_message:
+      type: text
+      label: 'Your "Hello World!" message'

@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function hello_menu() {
+  $items['hello'] = array(
+    'title' => 'Hello World Page',
+    'description' => '“Hello World” module for Drupal 8.',
+    'route_name' => 'hello.hello',
+  );
+  $items['hello/config'] = array(
+    'title' => 'Hello World settings',
+    'description' => 'Configure “Hello World” module.',
+    'route_name' => 'hello.settings_form',
+  );
+  return $items;
+}

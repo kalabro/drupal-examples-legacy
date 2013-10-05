@@ -1,0 +1,7 @@
+hello:
+  type: names
+  base_path: 'admin/config/hello'
+  names:
+    - 'hello.settings'
+  title: 'Hello World settings'
+  class: '\Drupal\config_translation\ConfigNamesMapper'
