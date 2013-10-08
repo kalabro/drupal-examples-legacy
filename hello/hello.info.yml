@@ -1,5 +1,5 @@
 name: Hello
 description: '"Hello World" module with config translation support.'
-core: 8.x 
+core: 8.x
 type: module
-configure: admin/config/hello
+configure: hello.settings_form
