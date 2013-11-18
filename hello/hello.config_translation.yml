@@ -1,7 +1,5 @@
 hello:
-  type: names
-  base_path: 'admin/config/hello'
+  title: 'Hello World settings'
+  base_route_name: hello.settings_form
   names:
     - 'hello.settings'
-  title: 'Hello World settings'
-  class: '\Drupal\config_translation\ConfigNamesMapper'
