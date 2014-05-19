@@ -1,4 +1,4 @@
 hello.settings_form_tab:
   route_name: hello.settings_form
   title: Settings
-  tab_root_id: hello.settings_form_tab
+  base_route: hello.settings_form

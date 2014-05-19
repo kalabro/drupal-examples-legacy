@@ -1,0 +1,8 @@
+hello.admin:
+  title: Hello World settings
+  description: 'Configure “Hello World” module.'
+  parent: system.admin_config
+  route_name: hello.settings_form
+hello.hello:
+  title: Hello World Page
+  route_name: hello.hello

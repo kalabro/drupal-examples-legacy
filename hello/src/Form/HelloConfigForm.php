@@ -19,18 +19,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class HelloConfigForm extends ConfigFormBase {
 
   /**
-   * Constructs a \Drupal\hello\Form\HelloConfigForm object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactory $config_factory
-   *   The factory for configuration objects.
-   * @param \Drupal\Core\Config\Context\ContextInterface $context
-   *   The configuration context to use.
-   */
-  public function __construct(ConfigFactory $config_factory, ContextInterface $context) {
-    parent::__construct($config_factory, $context);
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function getFormID() {
@@ -41,7 +29,7 @@ class HelloConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, array &$form_state) {
-    $config = $this->configFactory->get('hello.settings');
+    $config = $this->config('hello.settings');
 
     $hello_message = $config->get('hello_message');
 
@@ -70,7 +58,7 @@ class HelloConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, array &$form_state) {
-    $this->configFactory->get('hello.settings')
+    $this->config('hello.settings')
       ->set('case', $form_state['values']['case'])
       ->set('hello_message', $form_state['values']['hello_message'])
       ->save();
