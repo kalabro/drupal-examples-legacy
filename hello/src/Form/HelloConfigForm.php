@@ -1,17 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\hello\Form\HelloConfigForm.
- */
-
 namespace Drupal\hello\Form;
 
-use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Config\Context\ContextInterface;
-use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Configure text display settings for this the hello world page.
@@ -21,18 +13,15 @@ class HelloConfigForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormID() {
+  public function getFormId() {
     return 'hello_settings_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, array &$form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('hello.settings');
-
-    $hello_message = $config->get('hello_message');
-
     $form['case'] = array(
       '#type' => 'radios',
       '#title' => $this->t('Letter case of your "Hello World!" message'),
@@ -57,12 +46,22 @@ class HelloConfigForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, array &$form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('hello.settings')
-      ->set('case', $form_state['values']['case'])
-      ->set('hello_message', $form_state['values']['hello_message'])
+      ->set('case', $form_state->getValue('case'))
+      ->set('hello_message', $form_state->getValue('hello_message'))
       ->save();
 
     parent::submitForm($form, $form_state);
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames() {
+    return [
+      'hello.settings',
+    ];
+  }
+
 }
